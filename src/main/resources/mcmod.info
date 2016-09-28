@@ -1,0 +1,16 @@
+[
+{
+  "modid": "sdf_lib",
+  "name": "Sam, forever Doomed Lib",
+  "description": "Sam, forever doomed library for Serious Sam, Duke Nukem & Doom Minecraft Mods",
+  "version": "1.0",
+  "mcversion": "1.10.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ZeAmateis", "jglrxavpok"],
+  "credits": "jglrxavpok for his main codes",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
