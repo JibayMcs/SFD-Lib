@@ -1,4 +1,4 @@
-package fr.minecraftforgefrance.sdf.maths;
+package fr.minecraftforgefrance.sfd.maths;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
