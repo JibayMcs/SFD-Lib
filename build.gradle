@@ -142,7 +142,6 @@ void ftp(Map args, Closure antFileset = {}) {
                 passive : 'true'
         ]
 
-        logger.lifecycle(ftpArgs.toMapString())
         delegate.ftp(ftpArgs) {
             antFileset.delegate = delegate
             antFileset()
