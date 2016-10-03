@@ -108,53 +108,6 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.7'
 }
 
-ext.privateConfigFile = file 'secret/idmaven.properties' // le nom de votre fichier
-
-privateConfigFile.withReader {
-    def p = new Properties()
-    p.load(it)
-    project.ext.mvnIDs = new ConfigSlurper().parse p // privateConfig sera le nom utilisé pour accéder aux valeurs
-}
-
-configurations {
-    ftpAntTask
-}
-
-dependencies {
-    ftpAntTask("org.apache.ant:ant-commons-net:1.9.4") {
-        module("commons-net:commons-net:1.4.1") {
-            dependencies "oro:oro:2.0.8:jar"
-        }
-    }
-}
-
-void ftp(Map args, Closure antFileset = {}) {
-    ant {
-        taskdef(name: 'ftp',
-                classname: 'org.apache.tools.ant.taskdefs.optional.net.FTP',
-                classpath: configurations.ftpAntTask.asPath)
-        Map ftpArgs = args + [
-                verbose : 'yes',
-                server  : mvnIDs.host,
-                port    : mvnIDs.port,
-                userid  : mvnIDs.user,
-                password: mvnIDs.password,
-                passive : 'true'
-        ]
-
-        delegate.ftp(ftpArgs) {
-            antFileset.delegate = delegate
-            antFileset()
-        }
-    }
-}
-
-task mavenUpload(dependsOn: 'publish') << {
-    ftp(action: 'send', remotedir: "files/maven") {
-        fileset(dir: "$buildDir/repo")
-    }
-}
-
 apply plugin: 'maven-publish'
 
 publishing {
@@ -176,3 +129,4 @@ publishing {
         }
     }
 }
+
