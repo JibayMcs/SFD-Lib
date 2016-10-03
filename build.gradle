@@ -40,7 +40,7 @@ minecraft {
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
     mappings = "snapshot_20160518"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
 processResources
@@ -100,10 +100,6 @@ artifacts {
     archives javadocJar
 }
 
-configurations {
-    deployerJars
-}
-
 task wrapper(type: Wrapper) {
     gradleVersion = '2.7'
 }
@@ -115,9 +111,9 @@ publishing {
         universal(MavenPublication) {
             artifact jar
         }
-        /*dev(MavenPublication) {
-            artifact deobfJar
-        }*/
+        dev(MavenPublication) {
+            artifact devJar
+        }
         sources(MavenPublication) {
             artifact sourceJar
         }
