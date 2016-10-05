@@ -26,7 +26,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "0.0.2"
+version = "0.0.3"
 group= "fr.minecraftforgefrance"
 archivesBaseName = "sfd"
 
